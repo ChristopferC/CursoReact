@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <NavBar/>
-      <ItemListContainer/>
+      <ItemListContainer saludo="Le damos la bienvenida"/>
     </div>
   );
 }
