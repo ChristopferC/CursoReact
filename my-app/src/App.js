@@ -5,10 +5,7 @@ import NavBar from './components/NavBar'
 import CartWidget from './components/CartWidget'
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
-
-const ItemListContainer = () =>{
-  return <div><h2>Le damos la bienvenida</h2></div>
-}
+import ItemListContainer from './components/ItemListContainer';
 
 function App() {
   return (
