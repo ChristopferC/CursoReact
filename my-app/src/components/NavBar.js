@@ -1,12 +1,16 @@
-import React from 'react'
+import Container from 'react-bootstrap/Container'
+import  Nav from "react-bootstrap/Nav"
+import  Navbar from "react-bootstrap/Navbar"
+import  NavDropdown from "react-bootstrap/NavDropdown"
 import CartWidget from './CartWidget'
 
-const NavBar = () => {
-    return (
-        <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Santisublime</a>
+function NavBar() {
+
+return (
+    <>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Container>
+                <a className="navbar-brand" href="#">Santisublime</a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
@@ -33,11 +37,16 @@ const NavBar = () => {
                             </li>
                         </ul>
                     </div>
-                    <CartWidget/>
-                </div>
-            </nav>
-        </div>
-    )
+                    <Nav.Link eventKey={2} href="#">
+                        <CartWidget/>
+                    </Nav.Link>
+
+            </Container>
+        </Navbar>
+        
+    </>
+    
+  )
 }
 
 export default NavBar

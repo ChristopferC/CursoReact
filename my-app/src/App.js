@@ -5,15 +5,17 @@ import NavBar from './components/NavBar'
 import CartWidget from './components/CartWidget'
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
-import ItemListContainer from './components/ItemListContainer';
+import ItemCount from './components/ItemListContainer';
 
-function App() {
-  return (
-    <div className="App">
-      <NavBar/>
-      <ItemListContainer saludo="Le damos la bienvenida"/>
-    </div>
-  );
+function App() { 
+ 
+    return (
+        <div className="App" >
+          <NavBar />     
+          <ItemCount min= '1' stock ='10' />
+        </div>
+
+    )
 }
 
 export default App;
