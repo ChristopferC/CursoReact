@@ -12,16 +12,22 @@ const ItemCount = ({ min, stock, onAdd }) => {
     cantidad > min ? setCantidad(cantidad - 1) : alert("Mínimo de Compra");
   };
 
+  const agregar = () => {
+    onAdd( cantidad )
+};
+
+
   return (
     <>
       <div>
-        Contador
+        Cantidad
         <div>
           {cantidad}
         </div>
         <div>
           <button onClick={upCantidad}>Aumentar</button>
           <button onClick={downCantidad}>Decrementar</button>
+          <button onClick={ agregar }>Agregar al carrito</button>
         </div>
       </div>
     </>
