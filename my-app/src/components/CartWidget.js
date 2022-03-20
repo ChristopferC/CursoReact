@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FaShoppingCart } from "react-icons/fa";
 
 class Cart extends React.Component {

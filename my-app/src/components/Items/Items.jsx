@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom"
 
-
-function Item({prod}) {
+function Items({prod}) {
     return (
         <Link to={`detalle/${prod.id}`}>
             <div 
-                // key={prod.id}
+            
                 className='col-md-4'
             >                        
                 <div className="card w-100 mt-5" >
@@ -13,16 +12,14 @@ function Item({prod}) {
                         {`${prod.name} - ${prod.categoria}`}
                     </div>
                     <div className="card-body">
-                        <img src={prod.foto} alt='' className='w-50' />
                         {prod.price}                                                            
                     </div>
                     <div className="card-footer">  
                         
-                    <button className="btn btn-outline-primary btn-block">
-                                Termo para sublimación
-                    </button>
-                        
-                                                                                    
+                        <button className="btn btn-outline-primary btn-block">
+                                    Termo para sublimación
+                        </button>
+                                                                
                     </div>
                 </div>
             </div>
@@ -30,4 +27,4 @@ function Item({prod}) {
     )
 }
 
-export default Item
+export default Items
