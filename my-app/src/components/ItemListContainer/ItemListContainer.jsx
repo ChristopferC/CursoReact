@@ -6,6 +6,7 @@ import { getFetch } from "./gFetch";
 
 
 function ItemListContainer({ saludo }) {
+    const saludo = "Bienvenidos!! Conozcan nuestros productos!!"
     const [ loading, setLoading ] = useState(true)
     const [prods, setProds ] = useState([])
     const { id } = useParams()

@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemListContainer/ItemDetailContainer';
+import Componente404 from './Componente404';
 
 function App() { 
 
@@ -13,17 +14,30 @@ function App() {
       <Suspense fallback={<h3>Cargando ...</h3>}>
       <BrowserRouter>
           <div className="App" >
-              <NavBar />     
+              <NavBar />  
               <Routes>
-                  <Route 
-                      path="/" 
-                      element={
-                          <ItemListContainer 
-                              saludo= 'Bienvenido' 
-                          />
-                      } 
-                  />
-              </Routes>
+                <Route
+                  path="/"
+                  element={<ItemListContainer />}
+                />
+                <Route
+                  path="/categoria/:id"
+                  element={<ItemListContainer />}
+                />
+                <Route
+                  path="/clase"
+                  element={<ItemClassContainer />}
+                />
+                <Route path='/detalle/:detalleId' 
+                element={<ItemDetailContianer />}
+                />
+                <Route path='/notFound' 
+                element={<Componente404 />} 
+                />
+                <Route path='/*' 
+                element={<Navigate to='/' />} 
+                />
+              </Routes>   
           </div>
       </BrowserRouter>
   </Suspense>
