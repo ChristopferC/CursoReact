@@ -24,12 +24,8 @@ function App() {
                   path="/categoria/:id"
                   element={<ItemListContainer />}
                 />
-                <Route
-                  path="/clase"
-                  element={<ItemClassContainer />}
-                />
                 <Route path='/detalle/:detalleId' 
-                element={<ItemDetailContianer />}
+                element={<ItemDetailContainer />}
                 />
                 <Route path='/notFound' 
                 element={<Componente404 />} 

@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ItemCount from "../Items/ItemCount";
 import ItemList from "../Items/ItemList";
 import { getFetch } from "./gFetch";
 
-
 function ItemListContainer({ saludo }) {
-    const saludo = "Bienvenidos!! Conozcan nuestros productos!!"
+    const bienvenida = "Bienvenidos!! Conozcan nuestros productos!!"
     const [ loading, setLoading ] = useState(true)
     const [prods, setProds ] = useState([])
     const { id } = useParams()
@@ -26,11 +24,6 @@ function ItemListContainer({ saludo }) {
         }
     }, [id])
 
-    const onAdd = (cant) => {
-        console.log(cant)
-    }
-
-
     console.log(id)
     return (
             <>
@@ -39,7 +32,7 @@ function ItemListContainer({ saludo }) {
                     :
                         <ItemList prods={prods} />
                 }
-                <ItemCount min={1} stock={10} onAdd= { onAdd } />
+                <div><h1>{bienvenida}</h1></div>
             </>
     )
 }

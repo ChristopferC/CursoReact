@@ -1,35 +1,42 @@
-import {useState} from 'react'
+import { Link } from 'react-router-dom'
+import { useState,useEffect} from 'react';
 
-const ItemCount = ({ min, stock, onAdd }) => {
-  const [cantidad, setCantidad] = useState(min);
+const ItemCount = ({product,initial,addItem,setCantAdd})=>{
+    let stock = product.stock
+    const [itemcount,setItemcount] = useState(initial)
+    const [disabled,setDisabled] = useState("active")
 
-  const upCantidad = () => {
-    cantidad < stock ? setCantidad(cantidad + 1) : alert("Stock Insuficiente");
-  };
+    useEffect(() => {
+        if (initial>stock) {
+            setDisabled("disabled");
+        }
+      },[initial,stock]);
+    const Remove = ()=>{
+        if (itemcount>1) {
+            setItemcount(itemcount-1)
+        }
+    }
+    const Add = ()=>{
+        if (stock>itemcount) {
+            setItemcount(itemcount+1)
+        }
+    }
 
-  const downCantidad = () => {
-    cantidad > min ? setCantidad(cantidad - 1) : alert("Mínimo de Compra");
-  };
-
-  const agregar = () => {
-    onAdd( cantidad )
-};
-
-
-  return (
-      <div>
-        Cantidad
+    return(
+        stock===0?
         <div>
-          {cantidad}
+            <p>Producto sin stock</p>
+            <Link to={"/"}>Volver al inicio</Link>
         </div>
+        :
         <div>
-          <button onClick={upCantidad}>Aumentar</button>
-          <button onClick={downCantidad}>Decrementar</button>
-          <button onClick={ agregar }>Agregar al carrito</button>
+            <div>
+                <button onClick={Remove}>Remover</button>
+                <h4>{itemcount}</h4>
+                <button onClick={Add}>Agregar</button>               
+            </div>
+            <button onClick={()=>{addItem(product,itemcount); setCantAdd()}}>Finalizar compra</button>            
         </div>
-      </div>
-  );
-};
-
-export default ItemCount;
-
+    )
+} 
+export default ItemCount
