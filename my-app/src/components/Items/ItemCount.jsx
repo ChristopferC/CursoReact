@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom'
 import { useState,useEffect} from 'react';
 
-const ItemCount = ({product,initial,addItem,setCantAdd})=>{
-    let stock = product.stock
-    const [itemcount,setItemcount] = useState(initial)
+const ItemCount = ({product,inicial,setCantAdd,itemcount,setItemcount,stock,onAdd,compra})=>{
+    
+    
     const [disabled,setDisabled] = useState("active")
 
     useEffect(() => {
-        if (initial>stock) {
+        if (inicial>stock) {
             setDisabled("disabled");
         }
-      },[initial,stock]);
+      },[inicial,stock]);
     const Remove = ()=>{
         if (itemcount>1) {
             setItemcount(itemcount-1)
@@ -30,12 +30,16 @@ const ItemCount = ({product,initial,addItem,setCantAdd})=>{
         </div>
         :
         <div>
+          {!compra &&
             <div>
-                <button onClick={Remove}>Remover</button>
+                <button onClick={Remove}>Restar</button>
                 <h4>{itemcount}</h4>
-                <button onClick={Add}>Agregar</button>               
-            </div>
-            <button onClick={()=>{addItem(product,itemcount); setCantAdd()}}>Finalizar compra</button>            
+                <button onClick={Add}>Sumar</button>  
+                <button onClick={Add}>Agregar al carrito</button>              
+            </div>}
+            {compra && (
+            <><button>Continuar comprando</button> 
+            <button>Finalizar compra</button> </>)} 
         </div>
     )
 } 

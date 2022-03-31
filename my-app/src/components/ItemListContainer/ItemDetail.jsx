@@ -3,8 +3,15 @@ import { useState,useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 const ItemDetail = ({producto})=>{
-    const [cantAdd,setCantAdd] = useState (0)
-    const { addItem } = useContext()
+    const [itemCount,setItemCount] = useState (1)
+    const [cantAdd,setCantAdd] = useState (false)
+    const [compra,setCompra] = useState (0)
+
+    const onAdd= () => {
+        console.log(producto)
+        compra(true)
+    }
+
 
     return (
         <div >
@@ -14,7 +21,7 @@ const ItemDetail = ({producto})=>{
                 <p className='alert alert-primary w-25'>{producto.categoria}</p>
             </center>
             {
-                <ItemCount producto={producto} initial={1} addItem={addItem} setCantAdd = {setCantAdd}/>
+                <ItemCount inicial={1} stock={5} setCantAdd={setCantAdd} itemCount={itemCount} setItemCount={setItemCount} onAdd={onAdd} compra={compra}/>
             }
         </div>
     )
