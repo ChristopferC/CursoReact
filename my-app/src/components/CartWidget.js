@@ -1,10 +1,17 @@
 import React from 'react';
 import { FaShoppingCart } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
-class Cart extends React.Component {
-  render() {
-    return <h3><FaShoppingCart/> </h3>
-  }
-}
-
-export default Cart
+const CartWidget = ({numCompra})=>{
+  return(
+      <div className='WidgetShop'>
+          <Link to="/cart" className="WidgetShop"> 
+              <FaShoppingCart/>
+              {numCompra}
+          </Link>
+      </div>
+      
+      
+  )
+} 
+export default CartWidget

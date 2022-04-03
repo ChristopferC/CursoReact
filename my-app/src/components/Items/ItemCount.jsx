@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useState,useEffect} from 'react';
 
-const ItemCount = ({product,inicial,setCantAdd,itemcount,setItemcount,stock,onAdd,compra})=>{
-    
+const ItemCount = ({product,inicial,setCantAdd,itemcount,setItemcount,stock,onAdd,compra,addItem})=>{
+    let stock = product.stock
     
     const [disabled,setDisabled] = useState("active")
 
@@ -10,7 +10,7 @@ const ItemCount = ({product,inicial,setCantAdd,itemcount,setItemcount,stock,onAd
         if (inicial>stock) {
             setDisabled("disabled");
         }
-      },[inicial,stock]);
+    },[inicial,stock]);
     const Remove = ()=>{
         if (itemcount>1) {
             setItemcount(itemcount-1)
@@ -30,16 +30,16 @@ const ItemCount = ({product,inicial,setCantAdd,itemcount,setItemcount,stock,onAd
         </div>
         :
         <div>
-          {!compra &&
-            <div>
-                <button onClick={Remove}>Restar</button>
-                <h4>{itemcount}</h4>
-                <button onClick={Add}>Sumar</button>  
-                <button onClick={Add}>Agregar al carrito</button>              
-            </div>}
+            {!compra &&
+                <div>
+                    <button onClick={Remove}>Restar</button>
+                    <h4>{itemcount}</h4>
+                    <button onClick={Add}>Sumar</button>  
+                    <button onClick={Add}>Agregar al carrito</button>              
+                </div>}
             {compra && (
-            <><button>Continuar comprando</button> 
-            <button>Finalizar compra</button> </>)} 
+                <><button>Continuar comprando</button> 
+                <button onClick={()=>{addItem(product,itemcount); setCantAdd()}}>Finalizar compra</button></>)} 
         </div>
     )
 } 
